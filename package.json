@@ -1,0 +1,25 @@
+{
+  "name": "securefilenode",
+  "version": "1.0.0",
+  "description": "secure file sharing",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/app.js -e js,html,css",
+    "start": "node src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "2.4.3",
+    "body-parser": "1.19.0",
+    "cors": "2.8.5",
+    "express": "4.17.1",
+    "helmet": "4.4.1",
+    "mongoose": "5.12.4",
+    "validator": "13.5.2"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.7"
+  }
+}
