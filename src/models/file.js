@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const fileSchema = mongoose.Schema({
-    name: {
+    filename: {
         type: String,
         required: true,
         trim: true
