@@ -17,7 +17,7 @@ router.post('/addNewUser', async (req, res, next) => {
     } catch (error) {
         return res.json({
             success: false,
-            message: 'Nahi aise nahi hoga.',
+            message: 'Something went wrong.',
             _message: error._message
         })
     }

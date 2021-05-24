@@ -14,6 +14,14 @@ const fileSchema = mongoose.Schema({
     path: {
         type: String,
         required: true
+    },
+    extension: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
     }
 }, {
     timestamps: true

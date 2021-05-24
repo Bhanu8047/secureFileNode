@@ -14,7 +14,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.get('', (req, res) => {
     res.send(`
-    <h1> MASTI BHARI SHARING</h1>
+    <h1>Secure File Sharing.</h1>
     `)
 })
 
