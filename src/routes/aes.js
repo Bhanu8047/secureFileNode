@@ -48,9 +48,4 @@ function startProcess(){
 
 
 startProcess()
-// let data = read();
-// console.log(data)
 
-
-// console.log(encrypt('TextToEncrypt'))
-// console.log(decyrpt(encrypt((read().toString()))));
