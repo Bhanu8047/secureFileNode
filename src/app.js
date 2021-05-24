@@ -5,7 +5,6 @@ const helmet = require('helmet')
 const app = express()
 require('./db/db')
 
-
 let PORT = process.env.PORT || 4000
 
 app.use(cors())
@@ -14,7 +13,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.get('', (req, res) => {
     res.send(`
-    <h1>Secure File Sharing.</h1>
+        <h1>Secure File Sharing.</h1>
     `)
 })
 
