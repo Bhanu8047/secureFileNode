@@ -8,7 +8,7 @@ var algorithm = 'aes-128-cbc';
 var password = crypto.randomBytes(8).toString('hex')
 
 
-console.log(password)
+// console.log(password)
 
 function encrypt(val) {
     var cipher = crypto.createCipheriv(algorithm, password, iv);
@@ -22,5 +22,35 @@ function decyrpt(encrypted) {
     return (mystr+decipher.final('utf8'));
 }
 
-console.log(encrypt('TextToEncrypt'))
-console.log(decyrpt(encrypt(("My sdasdasdasdasdadasdasdasdliuhvadfougyfegbhiuosDFiyuogsFiusFguySDAfiuog is manik"))));
+const fs = require('fs')
+
+function startProcess(){
+   fs.readFile('./test.txt', 'utf8' , (err, data) => {
+        if (err) {
+          console.error(err)
+          return data;
+        }   
+        // console.log(encrypt(data));
+        console.log(decyrpt(encrypt(data)));
+
+        fs.writeFile('./test_encrypted.txt', encrypt(data),{ flag: 'w+' } , err => {
+            if (err) {
+              console.error(err)
+              return
+            }
+            //file written successfully
+          })
+
+
+      })
+      
+}
+
+
+startProcess()
+// let data = read();
+// console.log(data)
+
+
+// console.log(encrypt('TextToEncrypt'))
+// console.log(decyrpt(encrypt((read().toString()))));
