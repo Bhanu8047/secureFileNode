@@ -12,7 +12,6 @@ router.post('/addFile', upload.single('filetoupload') ,async (req, res, next) =>
     const file = new File()
     let key = 'MySuperSecretKey';
     file.password = crypto.createHash('sha256').update(String(key)).digest('base64').substr(0, 32);
-    file.filename = req.body.filename
     file.path = req.filePath
     file.extension = req.extension
     const filePath = req.originalPath
@@ -33,10 +32,11 @@ router.post('/addFile', upload.single('filetoupload') ,async (req, res, next) =>
     }
 })
 
-router.get('/downloadFile/:name', async (req, res, next) => {
+router.get('/downloadFile', async (req, res, next) => {
     console.log(req.params)
+    const { _id } = req.body.id
     try {
-        const file = await File.findOne({filename: req.params.name})
+        const file = await File.findById(_id)
         if(!file) return res.json({
             message: 'File not found by this name.'
         })

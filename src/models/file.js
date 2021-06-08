@@ -1,11 +1,6 @@
 const mongoose = require('mongoose')
 
 const fileSchema = mongoose.Schema({
-    filename: {
-        type: String,
-        required: true,
-        trim: true
-    },
     // owner: {
     //     type: mongoose.Types.ObjectId,
     //     required: true,
