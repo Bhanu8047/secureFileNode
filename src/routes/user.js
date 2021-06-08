@@ -23,4 +23,11 @@ router.post('/addNewUser', async (req, res, next) => {
     }
 })
 
+router.get('/upload/file', async(req, res, next) => {
+    res.render('upload',{
+        title: 'Secure Node File Sharing.',
+        footerNote: 'powered By Bits Ke PAPA\'s'
+    })
+})
+
 module.exports = router

@@ -4,7 +4,7 @@
   "description": "secure file sharing",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/app.js -e js,html,css",
+    "dev": "nodemon src/app.js -e js,html,css,hbs",
     "start": "node src/app.js",
     "db": "mongod --dbpath=../localdb"
   },
@@ -13,12 +13,18 @@
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "2.4.3",
-    "body-parser": "1.19.0",
+    "connect-mongodb-session": "2.4.1",
     "cors": "2.8.5",
     "express": "4.17.1",
+    "express-session": "1.17.2",
+    "hbs": "4.1.2",
     "helmet": "4.4.1",
+    "jsonwebtoken": "8.5.1",
     "mongoose": "5.12.4",
+    "morgan": "1.10.0",
     "multer": "1.4.2",
+    "nanoid": "3.1.23",
+    "nodemailer": "6.6.1",
     "validator": "13.5.2"
   },
   "devDependencies": {

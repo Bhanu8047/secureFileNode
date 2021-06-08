@@ -4,29 +4,31 @@ const upload = require('../middlewares/upload')
 const { encryption, decryption } = require('./aes')
 const path = require('path')
 const crypto = require('crypto')
+const fs = require('fs')
 
 
 router.post('/addFile', upload.single('filetoupload') ,async (req, res, next) => {
     // console.log(req.body)
     const file = new File()
-    file.password = crypto.randomBytes(8).toString('hex')
+    let key = 'MySuperSecretKey';
+    file.password = crypto.createHash('sha256').update(String(key)).digest('base64').substr(0, 32);
     file.filename = req.body.filename
     file.path = req.filePath
     file.extension = req.extension
     const filePath = req.originalPath
+
     if(encryption(filePath, file.password)) file.encrypted = true
     // decryption(filePath)
     try {
         await file.save()
         res.json({
             success: true,
-            file
+            message: 'successfully uploaded file.'
         })
     } catch (error) {
         res.json({
             success: false,
-            message: 'Could not upload file.',
-            _error: error._message
+            message: 'Could not upload file.'
         })
     }
 })
@@ -39,14 +41,20 @@ router.get('/downloadFile/:name', async (req, res, next) => {
             message: 'File not found by this name.'
         })
         const dir = path.join(__dirname,'../../files/')
-        
-        decryption(file.filename+'-'+'bhanu', file.password, file.extension) 
-        res.download(dir+'temp'+file.extension)
-
+        const filename = file.path.split('/')[2]
+        decryption(filename, file.password, file.extension, (err,ready)=>{
+            if(err)
+                return res.json({
+                    success: false,
+                    message: 'could not download.',
+                    err
+                })
+            res.download(dir+'download'+file.extension)
+        })
     } catch (error) {
         return res.json({
             message:'Something went wrong.',
-            _error: error._message
+            error
         })
     }
 })
@@ -60,6 +68,27 @@ router.get('/getAllFiles', async (req, res, next) => {
             files,
             message:'Success'
         })
+    } catch (error) {
+        return res.json({
+            message:'Something went wrong.',
+            _error: error._message
+        })
+    }
+})
+
+router.get('/deleteAllFiles', async (req, res, next) => {
+    try {
+        const files = await File.deleteMany({})
+
+        return files.n > 0 ? 
+         res.json({
+            files,
+            message:'All files Deleted',
+         }) : 
+         res.json({
+            files,
+            message:'No files Found',
+         })
     } catch (error) {
         return res.json({
             message:'Something went wrong.',

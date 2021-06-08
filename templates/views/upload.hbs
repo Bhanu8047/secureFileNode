@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload File</title>
+    <link rel="stylesheet" href="/css/upload.css">
+</head>
+<body>
+        <div class="div">
+        <span id="message"></span>
+    </div>
+    <div class="drag-area">
+        <header style="font-size: 20px;">Enter filename before uploading image.</header>
+        <input type="text" id="select" name="filename">
+        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+        <header>Drag & Drop to Upload File</header>
+        <span>OR</span>
+        <button>Browse File</button>
+        <input id="fileinput" type="file" hidden>
+      </div>
+      <script src="/js/upload.js"></script>
+</body>
+</html>
