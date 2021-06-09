@@ -1,15 +1,51 @@
 const loginBar = $('#loginBar')
-const signupBar = $('#signupBar')
-loginBar.click(()=>{
-    const form = $('#form')
-    form.submit(()=>{
-        
+const loginForm = $('#loginForm')
+loginForm.submit((e)=>{
+    e.preventDefault()
+    $('#errorMessage').text('')
+    const formData = new FormData(document.querySelector('#loginForm'))
+    const body = {
+        emailUsername: formData.get('emailUsername'),
+        password: formData.get('password'),
+    }
+    loginBar.addClass('loginAnim')
+    $('.spinner').fadeIn(800)
+    $('.spinner').addClass('loadAnim')
+    fetch('/user/login',{
+        method: 'POST',
+        headers:{
+            "Content-type":"application/json"   
+        },
+        body: JSON.stringify(body)
     })
-    // console.log('boombaam')
-    //     loginBar.addClass('loginAnim')
-    //     $('.spinner').fadeIn(800)
-    //     $('.spinner').addClass('loadAnim')
+    .then(res=>res.json())
+    .then(res=>{
+        if(!res.success){
+            loginBar.removeClass('loginAnim')
+            $('#errorMessage').text(res.message)
+            $('.spinner').removeClass('loadAnim')
+            $('.spinner').fadeOut()
+            
+        } else{
+            setTimeout(()=>{
+                location.href = '/files'
+            },2000)
+        }
+    })
+    .catch(err=>{
+        console.error(err)
+        loginBar.removeClass('loginAnim')
+        $('#errorMessage').text('server-Error: 500')
+        $('.spinner').removeClass('loadAnim')
+        $('.spinner').fadeOut()
+    })
 })
+
+
+
+
+
+const signupBar = $('#signupBar')
 const signupForm = $('#signupForm')
 signupForm.submit((e)=>{
     e.preventDefault()
@@ -48,6 +84,8 @@ signupForm.submit((e)=>{
             if(!res.success){
                 signupBar.removeClass('loginAnim')
                 $('#errorMessage').text(res.message)
+                $('.spinner').removeClass('loadAnim')
+                $('.spinner').fadeOut()
                 
             } else{
                 $('#errorMessage').text(res.message)   

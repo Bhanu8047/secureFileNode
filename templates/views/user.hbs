@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File-Box:: {{title}}</title>
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/partials.css">
+    <link rel="stylesheet" href="/css/viewFile.css">
+</head>
+<body>
+    {{>header}}
+        <main class="main">
+            <div class="userData__group">
+                <label class="userData-label">
+                    <strong>name</strong>
+                </label>
+                <h2 class="userData-value">
+                    {{user.name}}
+                </h2>
+            </div>
+            <div class="userData__group">
+                <label class="userData-label">
+                    <strong>email</strong>
+                </label>
+                <h2 class="userData-value">
+                    {{user.email}}
+                </h2>
+            </div>
+            <div class="userData__group">
+                <label class="userData-label">
+                    <strong>username</strong>
+                </label>
+                <h2 class="userData-value">
+                    {{user.username}}
+                </h2>
+            </div>
+        </main>
+        <div id="messageBox" class="message__box">
+            <p id="message" class="message"></p>
+        </div>
+    {{>footer}}
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/viewFile.js"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
-mongoose.connect('mongodb://localhost:27017/fileSharing', {
+require('dotenv').config()
+mongoose.connect(process.env.MONGODB_URI_LOCAL, {
     useCreateIndex : true, useUnifiedTopology: true, useNewUrlParser: true
 })

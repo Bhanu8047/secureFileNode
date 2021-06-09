@@ -26,30 +26,30 @@ app.get('/', (req, res) => {
        title: 'Secure Node File Sharing.',
        footerNote: 'powered By Bits Ke PAPA\'s',
        navbar: [
-           { link: '/user/login', name: 'login', id: 'login' },
-           { link: '/user/signup', name: 'create account', id: 'signup' },
+           { link: '/login', name: 'login', id: 'login' },
+           { link: '/signup', name: 'create account', id: 'signup' },
        ]
    })
 })
 
-app.get('/user/login', (req, res, next)=>{
+app.get('/login', (req, res, next)=>{
     res.render('login', {
         title: 'Secure Node File Sharing.',
         footerNote: 'powered By Bits Ke PAPA\'s',
         navbar: [
             { link: '/', name: 'home', id: 'home' },
-            { link: '/user/signup', name: 'create account', id: 'signup' },
+            { link: '/signup', name: 'create account', id: 'signup' },
         ]
     })
 })
 
-app.get('/user/signup', (req, res, next)=>{
+app.get('/signup', (req, res, next)=>{
     res.render('signup', {
         title: 'Secure Node File Sharing.',
         footerNote: 'powered By Bits Ke PAPA\'s',
         navbar: [
             { link: '/', name: 'home', id: 'home' },
-            { link: '/user/login', name: 'login', id: 'login' },
+            { link: '/login', name: 'login', id: 'login' },
         ]
     })
 })

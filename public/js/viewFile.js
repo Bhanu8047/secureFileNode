@@ -21,3 +21,35 @@ deleteAll.click((e)=>{
     })
 })
 
+const logout = $('#logout')
+logout.click((e)=>{
+    e.preventDefault()
+    fetch('/logout',{
+        method: 'POST'
+    })
+    .then(res=> res.json())
+    .then(res=> {
+        if(!res.success){
+            message.text(res.message)
+            messageBox.addClass('animBoxIn')
+            setTimeout(()=>{
+                messageBox.removeClass('animBoxIn')
+                messageBox.addClass('animBoxOut')
+            },3000)
+            messageBox.removeClass('animBoxOut')
+        } else {
+            message.text(res.message)
+            messageBox.addClass('animBoxIn')
+            setTimeout(()=>{
+                messageBox.removeClass('animBoxIn')
+                messageBox.addClass('animBoxOut')
+                location.href = '/login'
+            },3000)
+            messageBox.removeClass('animBoxOut')
+        }
+    })
+    .catch(err=>{
+        console.error(err)
+    })
+})
+

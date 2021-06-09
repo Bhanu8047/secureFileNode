@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
 
 const fileSchema = mongoose.Schema({
-    // owner: {
-    //     type: mongoose.Types.ObjectId,
-    //     required: true,
-    //     ref: 'User'
-    // },
+    owner: {
+        type: mongoose.Types.ObjectId,
+        required: true,
+        ref: 'User'
+    },
     path: {
         type: String,
         required: true

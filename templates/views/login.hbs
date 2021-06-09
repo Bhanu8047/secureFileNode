@@ -37,17 +37,16 @@
             </div>
             <div class="form__group apart">
                 <div class="remember__me">
-                    <input type="checkbox" id="rememberMe" required/>
+                    <input type="checkbox" id="rememberMe"/>
                     <label for="rememberMe">Remember me</label>
                 </div>
                 <div class="forgot__password">
                     <a class="link" href="/forgotPassword">Forgot Password?</a>
-                </div>
+                </div>    
             </div>
-            {{!-- <div class="form__group apart">
-                <input type="hidden">
-            </div> --}}
-            <input id="login" type="submit">
+            <div class="form__group absolute-div">
+                <p class="forgot__password" id="errorMessage"></p>
+            </div>
         </form>
         <button class="loginbar" id="loginBar" form="loginForm" type="submit">login</button>
         <div class="loader">

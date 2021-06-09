@@ -16,9 +16,9 @@ function decodeToken(token) {
 module.exports.jwtLogin = async (req, res, next) => {
     try {
         const { emailUsername, password } = req.body
-        let user = await User.find({username: emailUsername})
+        let user = await User.findOne({username: emailUsername})
         if(!user) {
-            user = await User.find({email: emailUsername})
+            user = await User.findOne({email: emailUsername})
             if(!user) {
                 return res.json({
                     success: false,
@@ -72,7 +72,7 @@ module.exports.isAuthenticatedMiddlewares = (req, res, next) => {
 
 module.exports.jwtLogout = (req, res, next) => {
     try {
-        req.session.detroy( async err => {
+        req.session.destroy( async err => {
             if(err){
                 res.redirect('/files')
             }
@@ -91,7 +91,7 @@ module.exports.jwtLogout = (req, res, next) => {
 
 module.exports.jwtLogoutAll = (req, res, next) => {
     try {
-        req.session.detroy( async err => {
+        req.session.destroy( async err => {
             if(err){
                 res.redirect('/files')
             }

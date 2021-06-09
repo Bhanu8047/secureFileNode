@@ -24,8 +24,7 @@ const storage = multer.diskStorage({
     filename: function(req, file , callback) {
         // const fileName = filename
         // console.log(fileName)
-        // const owner = req.user._id
-        const owner = 'user1'
+        const owner = req.user._id
         const extension = path.extname(file.originalname).toLowerCase()
         const filePath = owner+'-'+ getDateTime()
         req.extension = extension
