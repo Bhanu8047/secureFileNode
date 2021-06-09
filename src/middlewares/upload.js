@@ -1,4 +1,3 @@
-const { time } = require('console')
 const multer = require('multer')
 const path = require('path')
 

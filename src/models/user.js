@@ -23,7 +23,7 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minlength: 8,
+        minlength: [8,'must be greater than 8'],
         validate(value) {
             if(value.toLowerCase().includes('password')) throw new Error('something went wrong.')
         }

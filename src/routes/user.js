@@ -4,21 +4,34 @@ const bcrypt = require('bcryptjs')
 
 router.post('/addNewUser', async (req, res, next) => {
     const user = new User(req.body)
-    console.log(user);
     try {
-        if(await User.findOne({email: req.body.email})) return res.json({
-            message: 'user already exists.'
-        })
+        const userExists = await User.findOne({email: req.body.email})
+        if(userExists) {
+            return res.json({
+                success: false,
+                resCode: 400,
+                message: 'email already exists.'
+            })
+        }
+        const usernameExists = await User.findOne({username: req.body.username})
+        if(usernameExists) {
+            return res.json({
+                success: false,
+                resCode: 400,
+                message: 'username taken.'
+            })
+        }
         await user.save()
         return res.json({
             user,
             success: true,
+            message: 'user added successfully. Please Login'
         })
     } catch (error) {
         return res.json({
             success: false,
             message: 'Something went wrong.',
-            _message: error._message
+            _message: error
         })
     }
 })

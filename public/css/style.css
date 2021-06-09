@@ -1,8 +1,169 @@
-html,body{
+.main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
+    justify-content: center;
+    flex: 1 0 auto;
+    padding: 24px;
+}
+.loginForm{
+    z-index: 2;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 96px;
+    border-radius: 30px;
+    box-shadow: 0 2px 7px rgba(8, 56, 119,0.5);
+    background-image: linear-gradient(to right, rgb(228, 197, 197), rgb(157, 182, 221));
+}
+.hero-logo{
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    border: 1px solid rgb(5, 49, 90);
+    border-radius: 100%;
+    background-image: linear-gradient(to right, rgb(5, 49, 90),rgb(9, 66, 119));
+    top: -75px;
+}
+.hero-img{
+    width: 65%;
+}
+
+.form__group{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.form__group input[type=text],
+.form__group input[type=password],
+.form__group input[type=email] {
+    padding: 10px 12px;
+    outline: none;
+    background-color: rgb(9, 66, 119);
+    border: none;
+    color: #fff;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+input[type=submit]{
+    display: none;
+}
+
+.form__group label:not(:last-child){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(5, 49, 90);
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+input[type=text]::placeholder,
+input[type=password]::placeholder,
+input[type=email]::placeholder{
+    color: rgba(255,255,255,0.8);
+}
+
+.ionicon{
+    padding: 10px 12px;
+    height: 30px;
+    width: 30px;
+    fill: #fff;
+}
+.apart{
     width: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    justify-content: space-between !important;
+}
+.remember__me,
+.forgot__password{
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    color: rgb(9, 66, 119);
+}
+.forgot__password{
+    font-style: italic;
+    letter-spacing: 1px;
+}
+.absolute-div{
+    display: flex;
+    position: absolute;
+    bottom: 30px;
+}
+.link:link,
+.link:visited{
+    text-decoration: none;
+    color: rgb(9, 66, 119);
+}
+
+.loginbar{
+    all: unset;
+    display: flex;
+    justify-content: center;
+    padding: 16px 0;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    width: 70%;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    background-image: linear-gradient(to right, rgb(228, 197, 197), rgb(163, 165, 228));
+    box-shadow: 0 2px 5px rgba(71, 84, 109,0.7);
+    cursor: pointer;
+    transition: 0.25s;
+    color: #fff;
+}
+.loginbar:hover{
+    box-shadow: 0 1px 2px rgba(71, 84, 109,0.7);
+}
+.loginAnim{
+    animation-name: loginPush;
+    animation-timing-function: ease-out;
+    animation-duration: .7s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+.loader{
+    display: flex;
+    height: 50px;
+    width: 50px;
+}
+.loader .spinner{
+    display: none;
+    height: 50px;
+    width: 50px;
+    border-top: 3px solid rgb(5, 49, 90);
+    border-bottom: 2px solid rgb(9, 66, 119);
+    border-radius: 20px;
+}
+.loadAnim{
+    animation-name: loader;
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation-duration: .8s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    animation-delay: 0.7s;
+}
+@keyframes loginPush {
+    0%{
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(-60px);
+    }
+}
+@keyframes loader {
+    0%{
+        transform: rotateZ(0deg);
+    }
+    100%{
+        transform: rotateZ(360deg);
+    }
 }

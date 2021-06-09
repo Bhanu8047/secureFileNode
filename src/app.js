@@ -54,8 +54,8 @@ app.get('/user/signup', (req, res, next)=>{
     })
 })
 
-app.use(require('./routes/file'))
 app.use(require('./routes/user'))
+app.use(require('./routes/file'))
 const server = http.createServer(app)
 
 server.listen(PORT, (e)=> {
