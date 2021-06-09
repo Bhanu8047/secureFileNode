@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File-Box:: Files</title>
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/partials.css">
+    <link rel="stylesheet" href="/css/viewFile.css">
+</head>
+<body>
+    {{>header}}
+        {{#if files}}
+            <div class="files">
+                {{#each files}}
+                    <div data-id="{{this._id}}" class="file">
+                        {{!-- <p class="files__ext">{{this.extension}}</p> --}}
+                        <p class="file__filename">
+                            <strong>Filename::</strong>
+                            <a class="link" href="/downloadFile/{{this._id}}">
+                                {{this.filename}}
+                            </a>
+                        </p>
+                        <p class="file__date">
+                            <strong>Added on::</strong> 
+                            {{this.createdAt}}
+                        </p>
+                        <div class="controller">
+                            <a class="btn btn-download" href="/downloadFile/{{this._id}}">download</a>
+                            <a class="btn btn-delete" href="/deleteFile/{{this._id}}">delete</a>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        {{else}}
+            <div class="files">
+                <h2>You don't have any files.</h2>
+            </div>
+        {{/if}}
+
+        <div id="messageBox" class="message__box">
+            <p id="message" class="message"></p>
+        </div>
+    {{>footer}}
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/viewFile.js"></script>
+</body>
+</html>

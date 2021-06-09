@@ -1,0 +1,120 @@
+
+.files{
+    padding: 24px 0;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-wrap: wrap;
+}
+
+.file{
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    border-radius: 3px;
+    margin: 10px;
+    transition: all 0.3s;
+    outline: rgb(13, 159, 226) 1px;
+    width: 300px;
+}
+.file:hover{
+    box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+    outline-style: dashed;
+}
+
+.file__filename,
+.file__date{
+    font-size: 16px;
+}
+
+.controller{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.btn:link,
+.btn:visited{
+    backface-visibility: hidden;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 12px 8px;
+    margin-left: 12px;
+    border-radius: 3px;
+    color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    transition: all .3s;
+}
+.btn-download{
+    background-image: linear-gradient(to right bottom, rgb(2, 133, 255), rgb(12, 157, 241));
+}
+.btn-delete{
+    background-image: linear-gradient(to right bottom, rgb(235, 90, 65), rgb(228, 116, 64));
+}
+
+
+.message__box{
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    top: -85px;
+    left: 50;
+    background-color: #555;
+    padding: 10px 16px;
+    border-radius: 3px;
+}
+.message__box .message {
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: #fff;
+    font-weight: 400;
+}
+.animBoxIn {
+    animation: messBoxIn;
+    animation-timing-function: ease-in-out;
+    animation-duration: .8s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+.animBoxOut {
+    animation: messBoxOut;
+    animation-timing-function: ease-in-out;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+@keyframes messBoxIn {
+    0%{
+        top: -85px
+    }
+    100%{
+        top: -1px
+    }
+}
+@keyframes messBoxOut {
+    0%{
+        top: -1px
+    }
+    100%{
+        top: -85px
+    }
+}
+
+@media screen and (max-width: 1440px) {
+}
+
+
+@media screen and (max-width: 1200px) {
+}
+
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 768px) {
+    .files{ flex-direction: column }
+    .file{ width: auto }
+}

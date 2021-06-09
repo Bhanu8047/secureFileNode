@@ -1,8 +1,8 @@
 <header class="header">
-        <h1>{{title}}</h1>
+        <h1>File-Box</h1>
         <nav>
-                <a href="/upload/file">Upload File</a>
-                <a href="/getAllFiles">File List</a>
-                <a href="/deleteAllFiles">Delete Files </a>
+                {{#each navbar}}
+                        <a id={{this.id}} href="{{this.link}}">{{this.name}}</a>
+                {{/each}}
         </nav>
 </header>

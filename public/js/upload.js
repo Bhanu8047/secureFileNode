@@ -52,10 +52,8 @@ function showFile(){
 }
 
 function uploadFile() {
-    const selectValue = document.querySelector('#select').value
     const formData = new FormData()
     formData.append('filetoupload', file)
-    formData.append('filename', selectValue)
     fetch('/addFile', {
         method: "POST",
         headers: {
@@ -68,7 +66,7 @@ function uploadFile() {
         message.style.color = '#fff'
         message.textContent = res.message
         setTimeout(()=>{
-            location.href = '/'
+            location.href = '/files'
         },3000)
     })
 }
