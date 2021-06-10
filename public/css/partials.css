@@ -53,6 +53,9 @@ html,body{
 .footer .follow a:active {
     transform: translateY(1px);
 }
+.footer .follow {
+    display: flex;
+}
 
 .footer {
     display: flex;
@@ -69,5 +72,7 @@ html,body{
     .header nav a{ margin: 10px 0 }
     .footer { flex-direction: column; justify-content: center;}
     .footer .rights,
-    .footer .follow{ margin: 10px 0; }
+    .footer .follow{ margin: 10px 0; text-align: center; }
+    .footer .follow{ flex-direction: column; margin: 10px 0; align-items: center;}
+    .footer .follow .power { margin: 0; width: 100%; padding: 12px 0; }
 }

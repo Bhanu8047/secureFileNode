@@ -83,7 +83,7 @@
     border-radius: 3px;
 }
 .shareform input::placeholder{
-    color: rgba(255,255,255,0.8);
+    color: rgb(255,255,255);
 }
 .shareForm button{
     all: unset;
@@ -162,6 +162,15 @@
 }
 
 @media screen and (max-width: 768px) {
-    .files{ flex-direction: column }
-    .file{ width: auto }
+    .files{ flex-direction: column; width: 100%; }
+    .file{ width: auto; }
+}
+
+@media screen and (max-width: 468px) {
+    .btn{ margin: 0 10px; }
+    .file{ width: 100%; padding: 10px 0; margin: 20px 0; height: auto; }
+    .shareForm{ flex-direction: column; align-items: center; }
+    .shareForm input{ width: 80%; }
+    .shareForm button{ width: 80%; margin: 10px 0; padding: 8px 12px; }
+    .file__filename,.file__date{ margin: 20px 20px 10px 20px; }
 }

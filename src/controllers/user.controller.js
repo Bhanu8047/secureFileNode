@@ -98,7 +98,6 @@ module.exports.addFile = async(req, res, next) => {
         navbar: [
             { link: '/', name: 'file-box', id: 'file-box' },
             { link: '/profile', name: 'profile', id: 'profile' },
-            { link: '/logout', name: 'logout', id: 'logout' },
         ],
     })
 }

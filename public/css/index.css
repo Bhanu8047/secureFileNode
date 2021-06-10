@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300&display=swap');
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1 0 auto;
+    padding: 24px;
+}
+.hero-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Kalam', cursive;
+  font-size: 10px;
+}
+.hero-box h2,
+.hero-box p {
+  text-align: center;
+  margin: 20px 0;
+}
+.hero-box h2{
+  font-size: 9.6em;
+}
+.hero-box p{
+  font-size: 2.5em;
+}
+
+.upload-area{
+  display: flex;
+  padding: 12px 20px;
+  border: 2px dashed rgba(8, 56, 119,0.8);
+  border-radius: 50px;
+}
+.drag-area{ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 16px 36px;
+  width: 100%;
+  background-color: rgba(8, 56, 119,0.8);
+  border-radius: 30px;
+}
+.drag-area.active{
+  border: 2px solid rgba(8, 56, 119,0.8);
+}
+.drag-area header{
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 15px;
+  color: #ededed;
+  letter-spacing: 1px;
+}
+.drag-area span{
+  font-size: 12px;
+  font-weight: 300;
+  color: #ededed;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}
+.drag-area button{
+  all: unset;
+  border-radius: 60px;
+}
+.drag-area button .ionicon{
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  fill: #ededed;
+}
+
+@media screen and (max-width: 1440px) {
+}
+
+
+@media screen and (max-width: 1200px) {
+}
+
+@media screen and (max-width: 1024px) {
+  .hero-box{ font-size: 8px; }
+}
+
+@media screen and (max-width: 768px) {
+  .hero-box{ font-size: 6px; }
+}

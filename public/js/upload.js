@@ -1,3 +1,4 @@
+const message = document.querySelector('#message')
 const dropArea = document.querySelector(".drag-area"),
 dragText = dropArea.querySelector("header"),
 button = dropArea.querySelector("button"),
@@ -9,6 +10,7 @@ button.onclick = ()=>{
 input.addEventListener("change", function(){
   file = this.files[0];
   dropArea.classList.add("active");
+  message.textContent = ''
   uploadFile()
 });
 
@@ -41,11 +43,9 @@ function uploadFile() {
         body: formData
     }).then(res=> res.json())
     .then(res=>{
-        const message = document.querySelector('#message')
-        message.style.color = '#fff'
         message.textContent = res.message
         setTimeout(()=>{
-            location.href = '/'
-        },3000)
+          message.textContent = ''
+        },2000)
     })
 }

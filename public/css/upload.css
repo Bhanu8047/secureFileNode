@@ -1,6 +1,7 @@
 .main{
   display: flex;
   flex: 1 0 auto;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -58,4 +59,12 @@
   .dropdown option{
     padding: 10px 25px;
     border-bottom: 1px solid #000;
+  }
+
+  .message{
+    padding: 12px;
+  }
+  .message span {
+    color: rgb(6, 37, 80);
+    font-size: 18px;
   }
