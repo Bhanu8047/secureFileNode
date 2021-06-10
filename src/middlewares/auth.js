@@ -53,7 +53,7 @@ module.exports.jwtAuthenticationMiddlewares = async (req, res, next) => {
     try {
         let token = req.session.token
         if(!token) return next()
-        // token = token.replace('Bearer ','')
+        token = token.replace('Bearer ','')
         const { _id } = decodeToken(token)
         const user = await User.findOne({_id, 'tokens.token': token})
         if(user) {

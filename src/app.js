@@ -1,22 +1,22 @@
 const http = require('http')
+require('./db/db')
 const express = require('express')
 const cors = require('cors')
 const morgan = require('morgan')
 const helmet = require('helmet')
 const path = require('path')
 const hbs = require('hbs')
+
 const app = express()
-require('./db/db')
 
 let PORT = process.env.PORT || 4000
 
+app.set('trust proxy',true)
 app.use(cors())
 app.use(helmet())
 app.use(morgan('tiny'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-
-app.use(require('./middlewares/session'))
 
 app.use(express.static(path.join(__dirname,'../public')))
 app.set('view engine', 'hbs')
