@@ -3,19 +3,14 @@ const User = require('../models/user')
 const path = require('path')
 const crypto = require('crypto')
 const { nanoid } = require('nanoid')
-require('dotenv').config()
 const fs = require('fs')
 
 // MiddleWares
 const { encryption, decryption } = require('../middlewares/aes')
-const {
-    CIPHER_PASS_KEY = nanoid(16)
-} = process.env
-
 
 module.exports.UploadFile = async (req, res, next) => {
     const file = new File()
-    file.password = crypto.createHash('sha256').update(String(CIPHER_PASS_KEY)).digest('base64').substr(0, 32);
+    file.password = crypto.createHash('sha256').update(String(nanoid(16))).digest('base64').substr(0, 32);
     file.path = req.filePath
     file.owner = req.user._id
     file.extension = req.extension
