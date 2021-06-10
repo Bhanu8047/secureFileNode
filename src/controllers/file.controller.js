@@ -2,13 +2,14 @@ const File = require('../models/file')
 const User = require('../models/user')
 const path = require('path')
 const crypto = require('crypto')
+const { nanoid } = require('nanoid')
 require('dotenv').config()
 const fs = require('fs')
 
 // MiddleWares
 const { encryption, decryption } = require('../middlewares/aes')
 const {
-    CIPHER_PASS_KEY
+    CIPHER_PASS_KEY = nanoid(16)
 } = process.env
 
 
