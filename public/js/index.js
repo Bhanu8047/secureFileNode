@@ -15,12 +15,12 @@ input.addEventListener("change", function(){
 dropArea.addEventListener("dragover", (event)=>{
   event.preventDefault();
   dropArea.classList.add("active")
-  dragText.textContent = "Release to Upload File";
+  // dragText.textContent = "Release to Upload File";
 })
 
 dropArea.addEventListener("dragleave", ()=>{
   dropArea.classList.remove("active")
-  dragText.textContent = "Drag & Drop to Upload File"
+  // dragText.textContent = "Drag & Drop to Upload File"
 })
 
 dropArea.addEventListener("drop", (event)=>{
