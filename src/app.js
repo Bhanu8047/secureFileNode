@@ -16,6 +16,8 @@ app.use(morgan('tiny'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
+app.use(require('./middlewares/session'))
+
 app.use(express.static(path.join(__dirname,'../public')))
 app.set('view engine', 'hbs')
 app.set('views', path.join(__dirname,'../templates/views'))

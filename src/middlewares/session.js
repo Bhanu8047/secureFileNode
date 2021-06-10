@@ -24,7 +24,7 @@ const storeDB = new MongoDBStore({
 const IN_PROD = process.env.NODE_ENV === 'production'
 router.use(session({
     secret: process.env.SESS_SECRET,
-    saveUninitialized: true,
+    saveUninitialized: false,
     resave: false,
     store: storeDB,
     cookie: {
@@ -32,7 +32,8 @@ router.use(session({
         sameSite: true,
         secure: IN_PROD,
         path:'/'
-    }
+    },
+    key: 'session.id'
 }))
 
 module.exports = router

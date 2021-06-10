@@ -48,7 +48,7 @@ module.exports.downloadFile = async (req, res, next) => {
             navbar: [
                 { link: '/profile', name: 'profile', id: 'profile' },
                 { link: '/upload/file', name: 'upload', id: 'upload' },
-                { link: '/files', name: 'file-box', id: 'file-box' },
+                { link: '/', name: 'file-box', id: 'file-box' },
                 { link: '/logout', name: 'logout', id: 'logout' },
             ]
         })
@@ -104,7 +104,7 @@ module.exports.deleteFileById = async (req, res, next) => {
                 navbar: [
                     { link: '/profile', name: 'profile', id: 'profile' },
                     { link: '/upload/file', name: 'upload', id: 'upload' },
-                    { link: '/files', name: 'file-box', id: 'file-box' },
+                    { link: '/', name: 'file-box', id: 'file-box' },
                     { link: '/logout', name: 'logout', id: 'logout' },
                 ]
             })

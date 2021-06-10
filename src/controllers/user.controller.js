@@ -85,7 +85,7 @@ module.exports.readUser = async (req, res ,next) => {
         user: req.user,
         title: 'Profile',
         navbar: [
-            { link: '/files', name: 'file-box', id: 'file-box' },
+            { link: '/', name: 'file-box', id: 'file-box' },
             { link: '/upload/file', name: 'upload', id: 'upload' },
             { link: '', name: 'dump file-box', id: 'deleteAll' },
             { link: '/logout', name: 'logout', id: 'logout' },

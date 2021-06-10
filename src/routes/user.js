@@ -1,14 +1,12 @@
 const router = require('express').Router()
-const User = require('../models/user')
-const bcrypt = require('bcryptjs')
 const { createUser, readUser, addFile, forgotPassword, sendOtp } = require('../controllers/user.controller')
 const { jwtLogin, jwtAuthenticationMiddlewares, isAuthenticatedMiddlewares, jwtLogout, jwtLogoutAll } = require('../middlewares/auth') 
 const authenticateOtp = require('../middlewares/otpAuth') 
 
+router.use(require('../middlewares/session'))
 router.post('/addNewUser', createUser)
 router.post('/getOtp', sendOtp)
 router.post('/password/reset', authenticateOtp, forgotPassword)
-router.use(require('../middlewares/session'))
 router.post('/user/login', jwtLogin)
 router.use(jwtAuthenticationMiddlewares)
 
