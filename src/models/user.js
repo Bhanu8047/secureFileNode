@@ -39,6 +39,11 @@ const userSchema = mongoose.Schema({
             required: true
         }
     }],
+    otp:{
+        type: String,
+        minlength: 6,
+        maxlength: 6
+    }
 }, {
     timestamps: true
 })

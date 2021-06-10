@@ -131,6 +131,7 @@ input[type=email]::placeholder{
 }
 
 .loader{
+    margin: 20px 0;
     display: flex;
     height: 50px;
     width: 50px;
@@ -149,7 +150,7 @@ input[type=email]::placeholder{
     animation-duration: .8s;
     animation-iteration-count: infinite;
     animation-fill-mode: forwards;
-    animation-delay: 0.7s;
+    /* animation-delay: 0.7s; */
 }
 @keyframes loginPush {
     0%{
@@ -183,5 +184,7 @@ input[type=email]::placeholder{
     .loginForm{ background: none;box-shadow: none; padding: 48px; margin-top: 60px; }
     .hero-logo{ width: 100px; height: 100px; }
     .loginAnim{ animation: none; }
-    .loginbar{ margin-top: -30px; margin-bottom: 20px;}
+    .loginbar{ margin-top: -10px; margin-bottom: 20px;}
+    .absolute-div{ bottom: 0; }
+
 }

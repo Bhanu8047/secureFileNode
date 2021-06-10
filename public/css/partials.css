@@ -30,7 +30,9 @@ html,body{
     align-items: center;
 }
 .header nav a:link,
-.header nav a:visited {
+.header nav a:visited,
+.footer .power:link,
+.footer .power:visited {
     backface-visibility: hidden;
     text-decoration: none;
     font-size: 16px;
@@ -41,16 +43,31 @@ html,body{
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     transition: all .3s;
 }
-.header nav a:hover{
+.header nav a:hover,
+.footer .power:hover{
     transform: translateY(-3px);
     box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    background-color: #ededed;
 }
-.header nav a:active {
+.header nav a:active,
+.footer .follow a:active {
     transform: translateY(1px);
+}
+
+.footer {
+    display: flex;
+    padding: 12px 0;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    font-size: 14px;
 }
 
 @media screen and (max-width: 768px) {
     .header{ flex-direction: column; }
     .header nav { flex-wrap: wrap; justify-content: center; }
     .header nav a{ margin: 10px 0 }
+    .footer { flex-direction: column; justify-content: center;}
+    .footer .rights,
+    .footer .follow{ margin: 10px 0; }
 }

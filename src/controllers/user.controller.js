@@ -1,5 +1,7 @@
 const User = require('../models/user')
 const bcrypt = require('bcryptjs')
+const { resetPassword } = require('../api/mail')
+const { nanoid } = require('nanoid')
 
 module.exports.createUser = async (req, res, next) => {
     const user = new User(req.body)
@@ -35,6 +37,48 @@ module.exports.createUser = async (req, res, next) => {
     }
 }
 
+module.exports.sendOtp = async (req, res, next) => {
+    const {email} = req.body
+    try {
+        const user = await User.findOne({email})
+        if(!user){
+            return res.json({
+                success: false,
+                message: 'email not found.'
+            })
+        }
+        const OTP = nanoid(6)
+        user.otp = OTP
+        await user.save()
+        const query = await resetPassword(user.name, user.email, OTP)
+        if(!query.accepted) {
+            return res.json({
+                success: false,
+                message: 'email could not sent.'
+            })
+        }
+        res.json({
+            success: true,
+            message: 'otp sent to your mail.'
+        })
+    } catch (error) {
+        next(error)
+    }
+}
+
+module.exports.forgotPassword = async (req, res, next) => {
+    const { password } = req.body
+    try {
+        req.user.password = password
+        await req.user.save()
+        res.json({
+            success: true,
+            message: 'password reset successfully.'
+        })
+    } catch (error) {
+        next(error)
+    }
+}
 
 module.exports.readUser = async (req, res ,next) => {
     req.user ? res.render('user',{
