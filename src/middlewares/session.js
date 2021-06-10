@@ -6,17 +6,12 @@ require('dotenv').config()
 
 const {
     SESS_LIFETIME = 1000 * 60 * 60 * 24 * 14,
-    SESSION_URI_LOCAL,
-    SESSION_DB,
-    SESSION_COLLECTION,
-    SESS_SECRET,
-    NODE_ENV
 } = process.env
 
 const storeDB = new MongoDBStore({
-    uri: SESSION_URI_LOCAL,
-    databaseName: SESSION_DB,
-    collection: SESSION_COLLECTION,
+    uri: process.env.SESSION_URI_LOCAL,
+    databaseName: process.env.SESSION_DB,
+    collection: process.env.SESSION_COLLECTION,
     connectionOptions: {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -26,9 +21,9 @@ const storeDB = new MongoDBStore({
     if(err)
         console.error(err)
 })
-const IN_PROD = NODE_ENV === 'production'
+const IN_PROD = process.env.NODE_ENV === 'production'
 router.use(session({
-    secret: SESS_SECRET,
+    secret: process.env.SESS_SECRET,
     saveUninitialized: true,
     resave: false,
     store: storeDB,

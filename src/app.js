@@ -23,7 +23,6 @@ hbs.registerPartials(path.join(__dirname, '../templates/partials'))
 
 app.use(require('./routes/user'))
 app.use(require('./routes/file'))
-const server = http.createServer(app)
 
 app.all('*', async (req, res, next) => {
     res.render('404',{
@@ -33,6 +32,7 @@ app.all('*', async (req, res, next) => {
     })
 })
 
+const server = http.createServer(app)
 server.listen(PORT, (e)=> {
     console.log(`Server on http://localhost:${PORT}`)
 })
