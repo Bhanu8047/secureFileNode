@@ -1,6 +1,9 @@
 const router = require('express').Router()
 const session = require('express-session')
 const MongoDBStore = require('connect-mongodb-session')(session)
+
+require('dotenv').config()
+
 const {
     SESS_LIFETIME = 1000 * 60 * 60 * 24 * 14,
     SESSION_URI_LOCAL,
