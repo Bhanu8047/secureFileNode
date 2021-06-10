@@ -66,7 +66,7 @@ function uploadFile() {
         message.style.color = '#fff'
         message.textContent = res.message
         setTimeout(()=>{
-            location.href = '/files'
+            location.href = '/'
         },3000)
     })
 }

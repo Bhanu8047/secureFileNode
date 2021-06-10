@@ -81,23 +81,10 @@ module.exports.getUserFiles = async (req, res, next) => {
             }
             newFiles.push(fileObj)
         })
-        if(newFiles.length === 0) return res.render('viewFiles',{
-            files: null,
-            navbar: [
-                { link: '/profile', name: 'profile', id: 'profile' },
-                { link: '/upload/file', name: 'upload', id: 'upload' },
-                { link: '', name: 'dump file-box', id: 'deleteAll' },
-                { link: '/logout', name: 'logout', id: 'logout' },
-            ]
-        })
-        res.render('viewFiles',{
+        return res.json({
+            success: true,
             files: newFiles,
-            navbar: [
-                { link: '/profile', name: 'profile', id: 'profile' },
-                { link: '/upload/file', name: 'upload', id: 'upload' },
-                { link: '', name: 'dump file-box', id: 'deleteAll' },
-                { link: '/logout', name: 'logout', id: 'logout' },
-            ]
+            message: 'files fetched'
         })
     } catch (error) {
         return res.json({
@@ -127,7 +114,7 @@ module.exports.deleteFileById = async (req, res, next) => {
                 next(err)
             } else {
                 await file.remove()
-                res.redirect('/files')
+                res.redirect('/')
             }
         })
     } catch (error) {
@@ -138,29 +125,24 @@ module.exports.deleteFileById = async (req, res, next) => {
 
 module.exports.dangerousDelete = async (req, res, next) => {
     try {
-        const files = await File.deleteMany({})
-        fs.readdir(path.join(__dirname,'../../files'), (err, filesDic) => {
-            if(err) {
-                throw err
-            } else {
-                for (const file of filesDic) {
-                    fs.unlink(path.join(path.join(__dirname,'../../files'), file), async (err) => {
-                        if(err) {
-                            throw err
-                        }
-                    })
+        const filestoDelete = await File.find({ owner: req.user._id })
+        for (const file of filestoDelete) {
+            fs.unlink(path.join(path.join(__dirname,'../../'), file.path), async (err) => {
+                if(err) {
+                    throw err
                 }
-            }
-          })
-          return files.n > 0 ? 
-            res.json({
-                files,
-                message:'All files Deleted',
-            }) : 
-            res.json({
-                files,
-                message:'No files Found',
             })
+        }
+        const files = await File.deleteMany({ owner: req.user._id })
+        return files.n > 0 ? 
+        res.json({
+            files,
+            message:'All files Deleted',
+        }) : 
+        res.json({
+            files,
+            message:'No files Found',
+        })
     } catch (error) {
         return res.json({
             message:'Something went wrong.',

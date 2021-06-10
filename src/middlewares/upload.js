@@ -24,7 +24,7 @@ const storage = multer.diskStorage({
     filename: function(req, file , callback) {
         // const fileName = filename
         // console.log(fileName)
-        const owner = req.user._id
+        const owner = req.user.username
         const extension = path.extname(file.originalname).toLowerCase()
         const filePath = owner+'-'+ getDateTime()
         req.extension = extension
@@ -45,6 +45,20 @@ const upload = multer({
         // mimetype && extname ? callback(null, true) : callback("Error: File type not matched. Allowed types - "+fileTypes)
         callback(null, true)
     }
-})
+}).single('filetoupload')
 
-module.exports = upload
+
+
+module.exports.fileUpload = async (req, res, next) =>{
+    upload(req, res, err => {
+        if(err) {
+            if(err.code == 'LIMIT_FILE_SIZE') {
+                return res.json({
+                    success: false,
+                    message: 'File size Large. Expected < 5MB'
+                })
+            }
+        }
+        next()   
+    })
+}

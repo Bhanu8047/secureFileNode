@@ -167,3 +167,21 @@ input[type=email]::placeholder{
         transform: rotateZ(360deg);
     }
 }
+
+@media screen and (max-width: 1440px) {
+}
+
+
+@media screen and (max-width: 1200px) {
+}
+
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 768px) {
+    .main{ flex: 0 0 auto; }
+    .loginForm{ background: none;box-shadow: none; padding: 48px; margin-top: 60px; }
+    .hero-logo{ width: 100px; height: 100px; }
+    .loginAnim{ animation: none; }
+    .loginbar{ margin-top: -30px; margin-bottom: 20px;}
+}

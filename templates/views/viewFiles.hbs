@@ -11,34 +11,8 @@
 </head>
 <body>
     {{>header}}
-        {{#if files}}
-            <div class="files">
-                {{#each files}}
-                    <div data-id="{{this._id}}" class="file">
-                        {{!-- <p class="files__ext">{{this.extension}}</p> --}}
-                        <p class="file__filename">
-                            <strong>Filename::</strong>
-                            <a class="link" href="/downloadFile/{{this._id}}">
-                                {{this.filename}}
-                            </a>
-                        </p>
-                        <p class="file__date">
-                            <strong>Added on::</strong> 
-                            {{this.createdAt}}
-                        </p>
-                        <div class="controller">
-                            <a class="btn btn-download" href="/downloadFile/{{this._id}}">download</a>
-                            <a class="btn btn-delete" href="/deleteFile/{{this._id}}">delete</a>
-                        </div>
-                    </div>
-                {{/each}}
-            </div>
-        {{else}}
-            <div class="files">
-                <h2>You don't have any files.</h2>
-            </div>
-        {{/if}}
-
+        <div class="files" id="filesReload">
+        </div>
         <div id="messageBox" class="message__box">
             <p id="message" class="message"></p>
         </div>

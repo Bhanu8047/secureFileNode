@@ -28,7 +28,7 @@ loginForm.submit((e)=>{
             
         } else{
             setTimeout(()=>{
-                location.href = '/files'
+                location.href = '/'
             },2000)
         }
     })

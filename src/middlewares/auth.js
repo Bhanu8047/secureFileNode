@@ -70,15 +70,11 @@ module.exports.isAuthenticatedMiddlewares = (req, res, next) => {
     req.user ? next() : res.redirect('/login')
 }
 
-module.exports.isAuthenticatedOrNot =  (req, res, next) => {
-    req.user ? res.redirect('/files') : next()
-}
-
 module.exports.jwtLogout = (req, res, next) => {
     try {
         req.session.destroy( async err => {
             if(err){
-                res.redirect('/files')
+                res.redirect('/')
             }
             req.user.tokens = req.user.tokens.filter(token => token.token !== req.token)
             await req.user.save()
@@ -97,7 +93,7 @@ module.exports.jwtLogoutAll = (req, res, next) => {
     try {
         req.session.destroy( async err => {
             if(err){
-                res.redirect('/files')
+                res.redirect('/')
             }
             req.user.tokens = []
             await req.user.save()
