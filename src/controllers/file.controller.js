@@ -46,7 +46,7 @@ module.exports.downloadFile = async (req, res, next) => {
         const file = await File.findById(_id)
         if(!file) return res.render('404',{
             navbar: [
-                { link: '/', name: 'home', id: 'home' },
+                { link: '/profile', name: 'profile', id: 'profile' },
                 { link: '/upload/file', name: 'upload', id: 'upload' },
                 { link: '/files', name: 'file-box', id: 'file-box' },
                 { link: '/logout', name: 'logout', id: 'logout' },
@@ -71,7 +71,7 @@ module.exports.downloadFile = async (req, res, next) => {
 
 module.exports.getUserFiles = async (req, res, next) => {
     try {
-        const files = await File.find({})
+        const files = await File.find({owner : req.user._id})
         const newFiles = []
         files.forEach(file => {
             const fileObj = {
@@ -84,7 +84,7 @@ module.exports.getUserFiles = async (req, res, next) => {
         if(newFiles.length === 0) return res.render('viewFiles',{
             files: null,
             navbar: [
-                { link: '/', name: 'home', id: 'home' },
+                { link: '/profile', name: 'profile', id: 'profile' },
                 { link: '/upload/file', name: 'upload', id: 'upload' },
                 { link: '', name: 'dump file-box', id: 'deleteAll' },
                 { link: '/logout', name: 'logout', id: 'logout' },
@@ -93,7 +93,7 @@ module.exports.getUserFiles = async (req, res, next) => {
         res.render('viewFiles',{
             files: newFiles,
             navbar: [
-                { link: '/', name: 'home', id: 'home' },
+                { link: '/profile', name: 'profile', id: 'profile' },
                 { link: '/upload/file', name: 'upload', id: 'upload' },
                 { link: '', name: 'dump file-box', id: 'deleteAll' },
                 { link: '/logout', name: 'logout', id: 'logout' },
@@ -115,7 +115,7 @@ module.exports.deleteFileById = async (req, res, next) => {
         if(!file) {
             return res.status(404).render('404',{
                 navbar: [
-                    { link: '/', name: 'home', id: 'home' },
+                    { link: '/profile', name: 'profile', id: 'profile' },
                     { link: '/upload/file', name: 'upload', id: 'upload' },
                     { link: '/files', name: 'file-box', id: 'file-box' },
                     { link: '/logout', name: 'logout', id: 'logout' },

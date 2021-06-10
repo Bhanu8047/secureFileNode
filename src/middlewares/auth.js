@@ -53,7 +53,7 @@ module.exports.jwtAuthenticationMiddlewares = async (req, res, next) => {
     try {
         let token = req.session.token
         if(!token) return next()
-        token = token.replace('Bearer ','')
+        // token = token.replace('Bearer ','')
         const { _id } = decodeToken(token)
         const user = await User.findOne({_id, 'tokens.token': token})
         if(user) {
@@ -68,6 +68,10 @@ module.exports.jwtAuthenticationMiddlewares = async (req, res, next) => {
 
 module.exports.isAuthenticatedMiddlewares = (req, res, next) => {
     req.user ? next() : res.redirect('/login')
+}
+
+module.exports.isAuthenticatedOrNot =  (req, res, next) => {
+    req.user ? res.redirect('/files') : next()
 }
 
 module.exports.jwtLogout = (req, res, next) => {

@@ -51,4 +51,6 @@ html,body{
 
 @media screen and (max-width: 768px) {
     .header{ flex-direction: column; }
+    .header nav { flex-wrap: wrap; justify-content: center; }
+    .header nav a{ margin: 10px 0 }
 }
