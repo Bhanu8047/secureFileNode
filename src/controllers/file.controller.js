@@ -1,4 +1,5 @@
 const File = require('../models/file')
+const User = require('../models/user')
 const path = require('path')
 const crypto = require('crypto')
 require('dotenv').config()
@@ -94,11 +95,54 @@ module.exports.getUserFiles = async (req, res, next) => {
     }
 }
 
+module.exports.sharedFiles = async (req, res, next) => {
+    try {
+        const files = await File.find({'shared.email' : req.user.email})
+        const newFiles = []
+        files.forEach(file => {
+            const fileObj = {
+                filename: file.path.split('/')[2]+file.extension,
+                _id: file._id,
+                createdAt: file.createdAt
+            }
+            newFiles.push(fileObj)
+        })
+        return res.json({
+            success: true,
+            files: newFiles,
+            message: 'files fetched'
+        })
+    } catch (error) {
+        return res.json({
+            message:'Something went wrong.',
+            error: error._message
+        })
+    }
+}
+
+module.exports.shareFile = async (req, res, next) => {
+    try {
+        const { _id, email } = req.body
+        const file = await File.findById(_id)
+        const user = await User.findOne({email})
+        if(!user) {
+            return res.redirect('/')
+        }
+        file.shared = file.shared.concat({email})
+        await file.save()
+        res.redirect('/')
+    } catch (error) {
+        return res.json({
+            message:'Something went wrong.',
+            error: error
+        })
+    }
+}
 
 module.exports.deleteFileById = async (req, res, next) => {
     const { _id } = req.params
     try {
-        const file = await File.findById(_id)
+        const file = await File.findOne({ _id, owner: req.user._id })
         if(!file) {
             return res.status(404).render('404',{
                 navbar: [

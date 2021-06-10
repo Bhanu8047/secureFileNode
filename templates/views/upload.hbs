@@ -5,20 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File-Box:: Upload File</title>
+    <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/partials.css">
     <link rel="stylesheet" href="/css/upload.css">
 </head>
 <body>
-        <div class="div">
-        <span id="message"></span>
-    </div>
-    <div class="drag-area">
-        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-        <header>Drag & Drop to Upload File</header>
-        <span>OR</span>
-        <button>Browse File</button>
-        <input id="fileinput" type="file" hidden>
-      </div>
+    {{>header}}
+        <main class="main">
+            <div class="div">
+                <span id="message"></span>
+            </div>
+            <div class="drag-area">
+                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                <header>Drag & Drop to Upload File</header>
+                <span>OR</span>
+                <button>Browse File</button>
+                <input id="fileinput" type="file" hidden>
+            </div>
+        </main>
+    {{>footer}}
       <script src="/js/upload.js"></script>
 </body>
 </html>

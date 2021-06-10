@@ -17,11 +17,21 @@
     transition: all 0.3s;
     outline: rgb(13, 159, 226) 1px;
     width: 300px;
-    height: 160px;
+    height: 200px;
 }
 .file:hover{
     box-shadow: 0 2px 2px rgba(0,0,0,0.2);
     outline-style: dashed;
+}
+.file .del{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ionicon{
+    width: 25px;
+    height: 25px;
+    fill: #fff;
 }
 
 .file__filename,
@@ -38,23 +48,59 @@
 
 .btn:link,
 .btn:visited{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     backface-visibility: hidden;
     text-decoration: none;
-    font-size: 16px;
-    padding: 12px 8px;
+    font-size: 22px;
     margin-left: 12px;
     border-radius: 3px;
     color: #fff;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     transition: all .3s;
+    height: 35px;
+    width: 35px;
 }
 .btn-download{
     background-image: linear-gradient(to right bottom, rgb(2, 133, 255), rgb(12, 157, 241));
 }
 .btn-delete{
     background-image: linear-gradient(to right bottom, rgb(235, 90, 65), rgb(228, 116, 64));
+    line-height: 1;
 }
-
+.shareForm{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.shareForm input{
+    padding: 10px 12px;
+    outline: none;
+    background-color: rgb(9, 66, 119);
+    border: none;
+    color: #fff;
+    border-radius: 3px;
+}
+.shareform input::placeholder{
+    color: rgba(255,255,255,0.8);
+}
+.shareForm button{
+    all: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 4px 12px;
+    margin-left: 12px;
+    border-radius: 3px;
+    color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    background-image: linear-gradient(to right bottom, rgb(153, 218, 110), rgb(50, 180, 78));
+    cursor: pointer;
+}
 
 .message__box{
     display: flex;

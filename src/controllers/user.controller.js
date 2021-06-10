@@ -95,7 +95,10 @@ module.exports.readUser = async (req, res ,next) => {
 
 module.exports.addFile = async(req, res, next) => {
     res.render('upload',{
-        title: 'Secure Node File Sharing.',
-        footerNote: 'powered By Bits Ke PAPA\'s'
+        navbar: [
+            { link: '/', name: 'file-box', id: 'file-box' },
+            { link: '/profile', name: 'profile', id: 'profile' },
+            { link: '/logout', name: 'logout', id: 'logout' },
+        ],
     })
 }

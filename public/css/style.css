@@ -180,11 +180,11 @@ input[type=email]::placeholder{
 }
 
 @media screen and (max-width: 768px) {
-    .main{ flex: 0 0 auto; }
-    .loginForm{ background: none;box-shadow: none; padding: 48px; margin-top: 60px; }
-    .hero-logo{ width: 100px; height: 100px; }
+    .main{ flex: 1 0 auto; padding: 0; }
+    .loginForm{ background: none;box-shadow: none; padding: 0; margin-top: 60px; }
+    .hero-logo{ width: 100px; height: 100px; top: -120px; }
     .loginAnim{ animation: none; }
-    .loginbar{ margin-top: -10px; margin-bottom: 20px;}
-    .absolute-div{ bottom: 0; }
+    .loginbar{ margin-top: 50px; margin-bottom: 20px;}
+    .absolute-div{ bottom: -50px; }
 
 }

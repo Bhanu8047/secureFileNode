@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File-Box:: Shared-Files</title>
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/partials.css">
+    <link rel="stylesheet" href="/css/viewFile.css">
+</head>
+<body>
+    {{>header}}
+        <div class="files" id="sharedReload">
+        </div>
+        <div id="messageBox" class="message__box">
+            <p id="message" class="message"></p>
+        </div>
+    {{>footer}}
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/sharedFile.js"></script>
+</body>
+</html>

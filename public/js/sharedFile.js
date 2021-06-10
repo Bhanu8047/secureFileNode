@@ -62,15 +62,16 @@ logout.click((e)=>{
 })
 
 function fetchFiles() {
-    fetch('/files', {
+    fetch('/sharedFiles', {
         method: 'GET'
     })
     .then(res=>res.json())
     .then(res => {
         if(res.success && res.files.length > 0){
             fileTemplate(res.files)
+            console.log('123123')
         } else {
-            $('#filesReload').html(`
+            $('#sharedReload').html(`
                 <h2> looks a bit empty here </h2>
             `)
         }
@@ -81,7 +82,7 @@ function fetchFiles() {
 }
 
 function fileTemplate (files) {
-    const filesR = document.querySelector('#filesReload')
+    const filesR = document.querySelector('#sharedReload')
     let Data = ``
     files.forEach(file => {
         Data += `
@@ -102,22 +103,8 @@ function fileTemplate (files) {
                 <strong>Added on::</strong> 
                 ${file.createdAt}
             </p>
-            <div class="controller">
-                
-                <form class="shareForm" action="/share/file" method="POST">
-                    <input type="text" placeholder="email" name="email" />
-                    <input type="hidden" name="_id" value="${file._id}" />
-                    <button type="submit">share</button>
-                </form>
-            </div>
         </div>
         `
     })
     filesR.innerHTML = Data
-}
-
-function sharedFile(){
-    const form = this
-    form.preventDefault()
-    console.log(form)
 }

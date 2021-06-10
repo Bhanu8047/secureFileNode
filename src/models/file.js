@@ -17,7 +17,13 @@ const fileSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    shared: [{
+        email: {
+            type: String,
+            required: true,
+        }
+    }]
 }, {
     timestamps: true
 })

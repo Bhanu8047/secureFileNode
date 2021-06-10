@@ -34,7 +34,7 @@ router.use(session({
         path:'/',
         httpOnly: false
     },
-    key: 'session.id'
+    key: 'connectID'
 }))
 
 module.exports = router

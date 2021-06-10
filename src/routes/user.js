@@ -21,6 +21,7 @@ router.get('/' ,(req, res) => {
     } else {
         res.render('viewFiles',{
             navbar: [
+                { link: '/shared', name: 'shared', id: 'shared' },
                 { link: '/profile', name: 'profile', id: 'profile' },
                 { link: '/upload/file', name: 'upload', id: 'upload' },
                 { link: '', name: 'dump file-box', id: 'deleteAll' },
@@ -29,6 +30,21 @@ router.get('/' ,(req, res) => {
         })
     }
  })
+
+ router.get('/shared', (req, res, next)=>{
+    if(req.user){
+       return res.render('shared', {
+           navbar: [
+                { link: '/', name: 'myfiles', id: 'myfiles' },
+                { link: '/profile', name: 'profile', id: 'profile' },
+                { link: '/upload/file', name: 'upload', id: 'upload' },
+                { link: '', name: 'dump file-box', id: 'deleteAll' },
+                { link: '/logout', name: 'logout', id: 'logout' },
+           ]
+       })
+    } 
+    return res.redirect('/')
+})
 
  router.get('/login', (req, res, next)=>{
      if(!req.user){
