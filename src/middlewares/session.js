@@ -30,7 +30,7 @@ router.use(session({
     cookie: {
         maxAge: SESS_LIFETIME,
         sameSite: true,
-        secure: IN_PROD,
+        secure: true,
         path:'/'
     },
     key: 'session.id'
