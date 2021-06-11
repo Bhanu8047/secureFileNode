@@ -4,18 +4,20 @@ const path = require('path')
 const crypto = require('crypto')
 const { nanoid } = require('nanoid')
 const fs = require('fs')
+const { tokenizeKey, getHashedKey } = require('../middlewares/keyEnc')
 
 // MiddleWares
 const { encryption, decryption } = require('../middlewares/aes')
 
 module.exports.UploadFile = async (req, res, next) => {
     const file = new File()
-    file.password = crypto.createHash('sha256').update(String(nanoid(16))).digest('base64').substr(0, 32);
+    const key = crypto.createHash('sha256').update(String(nanoid(16))).digest('base64').substr(0, 32);
+    file.password = tokenizeKey({_key_: key.toString()})
     file.path = req.filePath
     file.owner = req.user._id
     file.extension = req.extension
     try {
-        encryption(req.originalPath, file.password, async (err,data)=>{
+        encryption(req.originalPath, key, async (err,data)=>{
             if(err)
                 return res.json({
                     success: false,
@@ -49,7 +51,8 @@ module.exports.downloadFile = async (req, res, next) => {
                 { link: '/logout', name: 'logout', id: 'logout' },
             ]
         })
-        decryption(file.path.split('/')[2], file.password, file.extension, (err,data)=>{
+        const { _key_ } = getHashedKey(file.password)
+        decryption(file.path.split('/')[2], _key_, file.extension, (err,data)=>{
             if(err)
                 return res.json({
                     success: false,
