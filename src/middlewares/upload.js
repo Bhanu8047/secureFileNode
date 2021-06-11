@@ -1,5 +1,6 @@
 const multer = require('multer')
 const path = require('path')
+require('dotenv').config()
 
 const getDateTime = ()=>{
     var date = new Date()
@@ -33,7 +34,7 @@ const storage = multer.diskStorage({
         callback(null, filePath)
     }
 })
-const maxFileSize = 5 * 1000 * 1000;
+const maxFileSize = process.env.MAX_UPLOAD_SIZE
 
 const upload = multer({
     storage: storage,
